@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+/dist/
+/release/
+/dist-installer/
+
+# Local model/data files
+/models/
+*.db
+maya.db
+
+# Credentials and tokens
+credentials.json
+github-token.json
+token.json
+.env
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

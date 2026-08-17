@@ -1,0 +1,63 @@
+{
+  "name": "maya-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered desktop assistant with reminders, email, and GitHub integration",
+  "author": "Pavan",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "start": "npm run build && node node_modules/electron/cli.js .",
+    "build": "node node_modules/typescript/bin/tsc && npm run copy-html",
+    "copy-html": "powershell -Command \"New-Item -ItemType Directory -Force -Path dist/public; Copy-Item public/index.html dist/public/index.html -Force; Copy-Item public/index.html dist/index.html -Force\"",
+    "watch": "node node_modules/typescript/bin/tsc --watch",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:linux": "npm run build && electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.maya.assistant",
+    "productName": "Maya Assistant",
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*"
+    ],
+    "win": {
+      "target": "dir",
+      "icon": "public/icon.png"
+    }
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^8.0.1",
+    "@google-cloud/text-to-speech": "^7.0.0",
+    "@octokit/rest": "^22.0.1",
+    "axios": "^1.19.0",
+    "googleapis": "^175.0.0",
+    "groq-sdk": "^1.5.0",
+    "node-fetch": "^3.3.2",
+    "node-wav": "^0.0.2",
+    "node-windows": "^1.0.0-beta.8",
+    "power-utils": "^0.9.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "recorder-js": "^1.0.7",
+    "robotjs": "^0.9.1",
+    "screenshot-desktop": "^1.15.6",
+    "sqlite3": "^6.0.1",
+    "vosk": "^0.3.39"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/sqlite3": "^3.1.11",
+    "concurrently": "^10.0.5",
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3",
+    "typescript": "^7.0.2",
+    "wait-on": "^9.1.0"
+  }
+}

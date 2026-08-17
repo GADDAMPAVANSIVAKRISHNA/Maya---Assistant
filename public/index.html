@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Maya</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { 
+      background: transparent; 
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+      -webkit-app-region: drag;
+    }
+    #avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #8B7FFF, #4A3DB8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(108, 99, 255, 0.4);
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+      -webkit-app-region: no-drag;
+    }
+    #avatar:hover { transform: scale(1.1); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="avatar" onclick="openChat()">🤖</div>
+  <script>
+    function openChat() {
+      try {
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.send('show-chat');
+      } catch(e) {}
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+declare module 'vosk';
+declare module 'node-wav';
+declare module 'screenshot-desktop';
+declare module 'robotjs';
+declare module 'react';
+declare module 'react/jsx-runtime';
+declare module 'react-dom';
+declare module 'react-dom/client';
+declare module 'groq-sdk';
+declare module '@octokit/rest';
+declare module 'googleapis';
+declare module 'sqlite3';
